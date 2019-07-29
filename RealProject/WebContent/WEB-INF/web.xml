@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>RealProject</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+
+
+
+	
+	<!-- <servlet>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<servlet-class>cotroller.ControllerUsingURI</servlet-class>
+		<init-param>
+			<param-name>configFile</param-name>
+			<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping> 
+     -->
+
+  <servlet>
+		<servlet-name>MainAction</servlet-name>
+		<servlet-class>cotroller.MainAction</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MainAction</servlet-name>
+		<url-pattern>/Amatch/*</url-pattern>
+	</servlet-mapping> 
+	
+	<servlet>
+		<servlet-name>BoardAction</servlet-name>
+		<servlet-class>cotroller.BoardAction</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BoardAction</servlet-name>
+		<url-pattern>/board/*</url-pattern>
+	</servlet-mapping> 
+	
+	
+
+
+
+
+<jsp-config>
+	<jsp-property-group>
+		<url-pattern>/A-match/*</url-pattern>
+		<include-prelude>/common/top.jsp</include-prelude>
+		<include-coda>/common/footer.jsp</include-coda>
+	</jsp-property-group>
+</jsp-config>  
+	
+
+
+</web-app>

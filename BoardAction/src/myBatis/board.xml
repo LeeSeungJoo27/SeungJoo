@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="myBatis.board">
+
+	<select id="getArticleCount" parameterType="String" resultType="int">
+		select ifnull(count(*),0)  from board  where boardid = #{boardid}
+	</select>
+	
+	<select id="getArticles" parameterType="hashmap" resultType="Board">
+		select * from board where boardid = #{boardid} order by ref desc , re_step limit #{start} , #{end}
+	</select>
+	
+	<select id = "insertArticle_new" resultType="int">
+	 	select max(num) from
+	 	board
+	</select>
+	
+	<update id = "insertArticle_update" parameterType="hashmap">
+		update board set
+		re_step = re_step+1 where ref= #{ref} and re_step > #{re_step}
+	</update>
+	
+	<insert id = "insertArticle_insert" parameterType="Board">
+		insert into
+		board values
+		(#{num} ,#{boardid}, #{writer}, #{email}, #{subject}, #{password}, now(), 0,
+		#{ref}, #{re_step}, #{re_level}, #{content}, #{ip}, #{filename}, #{filesize})
+	</insert>
+	
+</mapper>
